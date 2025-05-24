@@ -104,6 +104,7 @@ jobs:
           set +x ; set +e
           #-------------#
           export HOST_TRIPLET="$(uname -m)-$(uname -s)"
+          echo "HOST_TRIPLET=${HOST_TRIPLET}" >> "${GITHUB_ENV}"
           ##Debug
            if [[ "${{ github.event.inputs.debug }}" == "true" ]] ; then
              export DEBUG="1"
@@ -274,7 +275,7 @@ jobs:
         if: env.CONTINUE_GHRUN != 'FALSE' && env.GITHUB_RELEASE == 'YES'
         uses: softprops/action-gh-release@v2.2.2
         with:
-          name: "Artifact (${{ env.SI_PKG_NAME}})"
+          name: "${{ env.SI_PKG_NAME}} (${{ env.HOST_TRIPLET}})"
           tag_name: "${{ env.GITHUB_RELEASE_TAG }}"
           prerelease: false
           draft: false
