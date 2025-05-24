@@ -296,3 +296,15 @@ jobs:
             echo "EXITED" | tee "/tmp/GHA_CI_STATUS"
           fi
         continue-on-error: true
+
+      - name: Check For Failure
+        if: env.CONTINUE_GHRUN == 'FALSE'
+        run: |
+          #Presets
+          set +x ; set +e
+          if [[ "${DEBUG}" = "1" ]] || [[ "${DEBUG}" = "ON" ]]; then
+             set -x
+          fi
+          #--------------#
+          exit 1
+        continue-on-error: false
