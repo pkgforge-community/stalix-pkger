@@ -273,7 +273,7 @@ jobs:
 
       - name: Releaser [${{ env.GITHUB_RELEASE_TAG }}]
         if: env.CONTINUE_GHRUN != 'FALSE' && env.GITHUB_RELEASE == 'YES'
-        uses: softprops/action-gh-release@v2.2.2
+        uses: softprops/action-gh-release@v2.3.0
         with:
           name: "${{ env.SI_PKG_NAME}} (${{ env.HOST_TRIPLET}})"
           tag_name: "${{ env.GITHUB_RELEASE_TAG }}"
