@@ -263,7 +263,7 @@ jobs:
 
       - name: Attest Build Provenance [${{ env.GITHUB_RELEASE_TAG }}]
         if: env.CONTINUE_GHRUN != 'FALSE'
-        uses: actions/attest-build-provenance@v2.3.0
+        uses: actions/attest-build-provenance@v2.4.0
         with:
           subject-name: "${{ env.GITHUB_RELEASE_TAG }}"
           subject-path: |
